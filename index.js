@@ -10,12 +10,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new ServerSocket(server, {
     cors: {
-        origin: 'https://chess3dloop.netlify.app/',
+        origin: 'https://chess3dloop.netlify.app',
     }
 });
 
 app.use(cors());
 app.use(morgan('dev'));
+server.use(cors());
 
 app.get('/', (req, res) => {
     res.write('<h1>Chess backend is running</h1>');
