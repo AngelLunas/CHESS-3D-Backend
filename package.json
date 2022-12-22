@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "server": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda serve src"
   },
   "keywords": [],
   "author": "",

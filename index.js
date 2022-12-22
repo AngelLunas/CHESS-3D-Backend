@@ -5,11 +5,12 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { dataPositions } from './dataPositions.js';
 
+const port = process.env.PORT || 4000;
 const app = express();
 const server = http.createServer(app);
 const io = new ServerSocket(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://chess3dloop.netlify.app/',
     }
 });
 
@@ -288,5 +289,5 @@ io.on('connection', (user) => {
     });
 });
 
-server.listen(4000);
+server.listen(port);
 console.log('server running on port 4000');
