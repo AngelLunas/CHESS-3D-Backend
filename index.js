@@ -17,6 +17,11 @@ const io = new ServerSocket(server, {
 app.use(cors());
 app.use(morgan('dev'));
 
+app.get('/', (req, res) => {
+    res.write('<h1>Chess backend is running</h1>');
+    res.end();
+});
+
 let users = [];
 let rooms = [];
 
