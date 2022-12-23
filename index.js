@@ -5,22 +5,21 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { dataPositions } from './dataPositions.js';
 
-const port = process.env.PORT || 4000;
 const app = express();
 const server = http.createServer(app);
 const io = new ServerSocket(server, {
     cors: {
-        origin: 'https://chess3dloop.netlify.app',
+        origin: 'https://chess3dloop.netlify.app/',
     }
 });
-
-app.use(cors());
-app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     res.write('<h1>Chess backend is running</h1>');
     res.end();
 });
+
+app.use(cors());
+app.use(morgan('dev'));
 
 let users = [];
 let rooms = [];
@@ -156,11 +155,13 @@ io.on('connection', (user) => {
                     users[index].enemy = users[userData].id;
                     users[index].color = 'white';
                     users[index].nameEnemy = users[userData].user;
+                    users[index].pause = false;
                     users[userData].waiting = false;
                     users[userData].enemy = users[index].id;
                     users[userData].color = 'black';
                     users[userData].nameEnemy = users[index].user;
                     users[userData].room = users[index].room;
+                    users[userData].pause = false;
                     const dataRoom = {user1: users[index], user2: users[userData], room: users[index].room};
                     rooms.push(dataRoom);
                     io.to(users[index].room).emit('setRoom', {
@@ -294,5 +295,5 @@ io.on('connection', (user) => {
     });
 });
 
-server.listen(port);
+server.listen(4000);
 console.log('server running on port 4000');
