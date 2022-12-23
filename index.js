@@ -5,6 +5,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { dataPositions } from './dataPositions.js';
 
+const PORT = process.env.PORT || 4000;
+
 const app = express();
 const server = http.createServer(app);
 const io = new ServerSocket(server, {
@@ -295,5 +297,5 @@ io.on('connection', (user) => {
     });
 });
 
-server.listen(4000);
-console.log('server running on port 4000');
+server.listen(PORT);
+console.log('server running on port', PORT);
