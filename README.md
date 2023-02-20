@@ -9,4 +9,4 @@ This website is a multiplayer game 3D chess. I developed this website with React
 
 [Repository frontend](https://github.com/AngelLunas/CHESS-3D)
 
-![Chess banner](public/chess-banner.png)
+![Chess banner](chess-banner.png)
